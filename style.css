@@ -4,27 +4,29 @@ body {
   padding: 0;
   background-color: #000000;
   color: #ffffff;
-  overflow: hidden; /* Prevents scrollbars on the main body */
+  overflow: hidden;
 }
 
 .main {
   display: flex;
-  height: 100vh;
+  height: calc(100vh - 72px);
   padding: 0.5rem;
 }
 
 .sidebar {
-  background-color: #000000; /* Changed from green to black to match background */
+  background-color: #000000;
   width: 340px;
+  min-width: 340px;
   border-radius: 1rem;
-  margin-right: 0.5rem; /* Adds space between sidebar and main content */
+  margin-right: 0.5rem;
+  overflow: hidden;
 }
 
 .main-content {
-  background-color: #121212; /* Spotify Dark Grey */
+  background-color: #121212;
   flex: 1;
   border-radius: 1rem;
-  overflow: auto; /* Allows scrolling only inside this area */
+  overflow: auto;
   padding: 0 1.5rem 0 1.5rem;
 }
 
@@ -56,7 +58,7 @@ a {
   line-height: 40px;
   opacity: 0.7;
   padding: 0.25rem 0.75rem;
-  transition: 0.2s; /* Smooth hover effect */
+  transition: 0.2s;
 }
 
 .nav-opt:hover {
@@ -76,9 +78,10 @@ a {
 .library {
   background-color: #121212;
   border-radius: 1rem;
-  height: 100%; /* Takes remaining height */
+  height: calc(100% - 116px);
   margin-top: 0.5rem;
   padding: 0.5rem 0.75rem;
+  overflow: auto;
 }
 
 .options {
@@ -142,8 +145,8 @@ a {
 .badge:hover {
   transform: scale(1.04);
 }
-/* Working on main content CSS */
 
+/* --- STICKY NAV --- */
 .sticky-nav {
   margin-top: 1rem;
   margin-bottom: 1rem;
@@ -155,30 +158,31 @@ a {
   background-color: #121212;
   z-index: 10;
 }
+
 .sticky-nav .nav-icons img {
   height: 2rem;
   width: 2rem;
   margin-right: 1rem;
   cursor: pointer;
 }
+
 .sticky-nav .sticky-nav-options {
   display: flex;
   align-items: center;
   justify-content: center;
   margin-left: 0.5rem;
 }
+
 .sticky-nav-options button {
   margin-right: 0.8rem;
 }
+
 .dark-badge {
   background-color: #000;
   color: #ffffff;
 }
-@media (max-width: 1000px) {
-  .hide {
-    display: none;
-  }
-}
+
+/* --- CARDS --- */
 .card {
   margin-top: 1rem;
   margin-left: 1.5rem;
@@ -186,18 +190,28 @@ a {
   width: 150px;
   border-radius: 0.5rem;
   padding: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
 }
+
+.card:hover {
+  background-color: #2a2a2a;
+}
+
 .cards-container {
   display: flex;
   flex-wrap: wrap;
 }
+
 .card-img {
   width: 100%;
   border-radius: 0.5rem;
 }
+
 .card-title {
   font-weight: 600;
 }
+
 .card-info {
   font-size: 0.9rem;
   opacity: 0.75;
@@ -209,79 +223,21 @@ a {
   align-items: center;
   justify-content: center;
 }
+
 .line {
   border-top: 1px solid white;
   width: 90%;
   height: 50%;
   opacity: 0.8;
 }
+
+/* --- MUSIC PLAYER --- */
 .music-player {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.album {
-  width: 25%;
-}
-.player {
-  width: 50%;
-}
-.controls {
-  width: 25%;
-}
-.player-control-icons {
-  height: 1rem;
-  margin: 0 1rem;
-  opacity: 0.7;
-}
-.player-control-icons:hover {
-  opacity: 1;
-}
-.player-controls {
-  margin-bottom: 0.4rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.player-control-icons-special {
-  height: 1rem;
-  margin: 0 1rem;
-  opacity: 0.6;
-  filter: invert(1);
-}
-.player-control-icons-special:hover {
-  opacity: 1;
-}
-
-.progress-bar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.progress-bar-range {
-  width: 70%;
-  cursor: pointer;
-  margin: 0 10px;
-  appearance: none;
-  padding: 0 1rem;
-  background-color: transparent;
-}
-.progress-bar-range::-webkit-slider-runnable-track {
-  height: 0.2rem;
-  background-color: #ffffff;
-  opacity: 0.7;
-  border-radius: 100px;
-}
-.progress-bar-range::-webkit-slider-thumb {
-  appearance: none;
-  height: 1rem;
-  width: 1rem;
-  background-color: #1bd760;
-  border-radius: 50%;
-  margin-top: -0.4rem;
-  cursor: pointer;
-}
 .album {
   display: flex;
   align-items: center;
@@ -345,35 +301,108 @@ a {
   transform: scale(1.1);
 }
 
+.player {
+  width: 50%;
+}
+
+.player-control-icons {
+  height: 1rem;
+  margin: 0 1rem;
+  opacity: 0.7;
+}
+
+.player-control-icons:hover {
+  opacity: 1;
+}
+
+.player-controls {
+  margin-bottom: 0.4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.player-control-icons-special {
+  height: 1rem;
+  margin: 0 1rem;
+  opacity: 0.6;
+  filter: invert(1);
+}
+
+.player-control-icons-special:hover {
+  opacity: 1;
+}
+
+.progress-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.progress-bar-range {
+  width: 70%;
+  cursor: pointer;
+  margin: 0 10px;
+  appearance: none;
+  padding: 0 1rem;
+  background-color: transparent;
+}
+
+.progress-bar-range::-webkit-slider-runnable-track {
+  height: 0.2rem;
+  background-color: #ffffff;
+  opacity: 0.7;
+  border-radius: 100px;
+}
+
+.progress-bar-range::-webkit-slider-thumb {
+  appearance: none;
+  height: 1rem;
+  width: 1rem;
+  background-color: #1bd760;
+  border-radius: 50%;
+  margin-top: -0.4rem;
+  cursor: pointer;
+}
+
+.controls {
+  width: 25%;
+}
+
 .Right-controls {
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 .Right-controls img {
   opacity: 0.6;
   margin: 0.4rem;
   height: 1.4rem;
   filter: invert(1);
 }
+
 .Right-controls img:hover {
   opacity: 1;
   transform: scale(1.1);
 }
+
 .progress-bar-range-control {
   width: 60%;
   cursor: pointer;
   margin: 0px;
   appearance: none;
-  padding:  1rem;
+  padding: 1rem;
   background-color: transparent;
 }
+
 .progress-bar-range-control::-webkit-slider-runnable-track {
   height: 0.2rem;
   background-color: #ffffff;
   opacity: 0.7;
   border-radius: 100px;
 }
+
 .progress-bar-range-control::-webkit-slider-thumb {
   appearance: none;
   height: 1rem;
@@ -382,4 +411,150 @@ a {
   border-radius: 50%;
   margin-top: -0.4rem;
   cursor: pointer;
+}
+
+/* ===================== */
+/* RESPONSIVE - TABLET   */
+/* ===================== */
+@media (max-width: 1000px) {
+  .hide {
+    display: none;
+  }
+
+  .sidebar {
+    width: 80px;
+    min-width: 80px;
+  }
+
+  .nav-opt a,
+  .lib-opt a,
+  .library .box,
+  .icons {
+    display: none;
+  }
+
+  .nav-opt {
+    display: flex;
+    justify-content: center;
+    padding: 0.5rem;
+  }
+
+  .nav-opt i {
+    font-size: 1.5rem;
+  }
+
+  .lib-opt {
+    justify-content: center;
+  }
+
+  .lib-opt img {
+    height: 1.5rem;
+    width: 1.5rem;
+  }
+
+  .album-icons {
+    display: none;
+  }
+
+  .Right-controls {
+    display: none;
+  }
+
+  .album {
+    width: 40%;
+  }
+
+  .player {
+    width: 60%;
+  }
+
+  .controls {
+    display: none;
+  }
+}
+
+/* ===================== */
+/* RESPONSIVE - MOBILE   */
+/* ===================== */
+@media (max-width: 600px) {
+  .main {
+    padding: 0.25rem;
+  }
+
+  .sidebar {
+    display: none;
+  }
+
+  .main-content {
+    padding: 0 0.75rem;
+    border-radius: 0.5rem;
+  }
+
+  .card {
+    width: 120px;
+    margin-left: 0.75rem;
+  }
+
+  .music-player {
+    height: 60px;
+    padding: 0 0.5rem;
+  }
+
+  .album {
+    width: 50%;
+    padding-left: 0.5rem;
+  }
+
+  .album img {
+    height: 2.5rem;
+    width: 2.5rem;
+  }
+
+  .album-info {
+    margin-left: 0.5rem;
+  }
+
+  .album-title {
+    font-size: 0.75rem;
+  }
+
+  .album-artist {
+    font-size: 0.65rem;
+  }
+
+  .album-icons {
+    display: none;
+  }
+
+  .player {
+    width: 50%;
+  }
+
+  .player-control-icons {
+    height: 0.8rem;
+    margin: 0 0.4rem;
+  }
+
+  .player-control-icons-special {
+    height: 0.8rem;
+    margin: 0 0.4rem;
+  }
+
+  .controls {
+    display: none;
+  }
+
+  .Right-controls {
+    display: none;
+  }
+
+  .curr-time,
+  .total-time {
+    font-size: 0.65rem;
+  }
+
+  .sticky-nav-options .badge {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.6rem;
+  }
 }
