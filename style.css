@@ -413,7 +413,9 @@ a {
   cursor: pointer;
 }
 
+
 /* RESPONSIVE - TABLET   */
+
 @media (max-width: 1000px) {
   .hide {
     display: none;
@@ -477,6 +479,7 @@ a {
 @media (max-width: 600px) {
   .main {
     padding: 0.25rem;
+    height: calc(100vh - 60px);
   }
 
   .sidebar {
@@ -509,7 +512,7 @@ a {
   }
 
   .album {
-    width: 50%;
+    width: 35%;
     padding-left: 0.5rem;
   }
 
@@ -535,7 +538,7 @@ a {
   }
 
   .player {
-    width: 50%;
+    width: 42%;
   }
 
   .player-control-icons {
@@ -549,10 +552,34 @@ a {
   }
 
   .controls {
-    display: none;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: auto;
+    padding-right: 0.5rem;
   }
 
   .Right-controls {
+    display: flex;
+    align-items: center;
+  }
+
+  .Right-controls span:nth-child(1),
+  .Right-controls span:nth-child(2),
+  .Right-controls span:nth-child(3),
+  .Right-controls span:nth-child(5),
+  .Right-controls span:nth-child(6) {
+    display: none;
+  }
+
+  .Right-controls img {
+    height: 1.2rem;
+    margin: 0.3rem;
+    opacity: 1;
+    filter: invert(1);
+  }
+
+  .progress-bar-range-control {
     display: none;
   }
 
